@@ -1,0 +1,16 @@
+html, body { height: 100%; }
+body { display: grid; place-items: center; padding: 16px; }
+main { display: grid; justify-items: center; gap: 6px; margin-top: -8vh; text-align: center; max-width: 560px; }
+#favicon { border-radius: 10px; margin-bottom: 10px; }
+h1 { font-size: 20px; margin: 0; overflow-wrap: anywhere; }
+p { margin: 0; color: var(--muted); overflow-wrap: anywhere; }
+#status { font-size: 12.5px; min-height: 1.4em; }
+button {
+  font: inherit; color: var(--text);
+  background: var(--field);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 6px 14px;
+  margin-top: 10px;
+  cursor: pointer;
+}

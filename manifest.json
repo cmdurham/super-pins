@@ -1,0 +1,55 @@
+{
+  "manifest_version": 3,
+  "name": "Super Pins",
+  "version": "1.0.0",
+  "description": "Arc-style pinned tabs for Helium: pins that survive restarts, show up in every window, can be renamed, and live in folders.",
+  "minimum_chrome_version": "116",
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_title": "Super Pins",
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png"
+    }
+  },
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "permissions": [
+    "tabs",
+    "tabGroups",
+    "storage",
+    "scripting",
+    "webNavigation",
+    "contextMenus",
+    "favicon"
+  ],
+  "host_permissions": ["<all_urls>"],
+  "commands": {
+    "toggle-super-pin": {
+      "suggested_key": { "default": "Alt+Shift+D", "mac": "Alt+Shift+D" },
+      "description": "Super pin or unpin the current tab"
+    },
+    "reset-super-pin": {
+      "suggested_key": { "default": "Alt+Shift+H", "mac": "Alt+Shift+H" },
+      "description": "Send the current super pin back to its pinned URL"
+    },
+    "rename-super-pin": {
+      "description": "Rename the current super pin"
+    },
+    "update-super-pin-url": {
+      "description": "Use the current page as the super pin's URL"
+    }
+  },
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  }
+}
