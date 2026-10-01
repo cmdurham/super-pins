@@ -396,6 +396,19 @@ async function refreshMeta(tab) {
   }
 }
 
+// Other extensions of mine (Tab Cleanup) can ask which tabs are super pins so they
+// leave them alone. Read-only: tab and group ids, and which windows are in sync.
+chrome.runtime.onMessageExternal.addListener((message, sender, sendResponse) => {
+  if (message?.type !== 'get-pin-tabs') return false;
+  getRuntime().then((rt) => sendResponse({
+    ok: true,
+    tabs: Object.entries(rt.instances).map(([tabId, i]) => ({ tabId: Number(tabId), windowId: i.windowId })),
+    groups: Object.entries(rt.groups).map(([groupId, g]) => ({ groupId: Number(groupId), windowId: g.windowId })),
+    syncedWindows: Object.entries(rt.windows).filter(([, w]) => w.synced).map(([id]) => Number(id)),
+  }));
+  return true;
+});
+
 chrome.webNavigation.onCommitted.addListener((details) => {
   if (details.frameId === 0) engine.applyPageScript(details.tabId);
 });

@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Super Pins",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Arc-style pinned tabs for Helium: pins that survive restarts, show up in every window, can be renamed, and live in folders.",
   "minimum_chrome_version": "116",
   "icons": {
